@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমার পার্সোনাল এজেন্ট</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, sans-serif; }
+  body {
+    background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    color:#fff; min-height:100vh; padding:20px;
+  }
+  .container { max-width:1200px; margin:0 auto; }
+  
+  /* Header */
+  header {
+    text-align:center; padding:40px 20px;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px; backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    margin-bottom:30px;
+  }
+  header h1 {
+    font-size:2.8rem; margin-bottom:10px;
+    background:linear-gradient(90deg,#00d4ff,#a78bfa,#f472b6);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  header p { color:#b8b8d1; font-size:1.1rem; }
+  
+  /* Chat Box */
+  .chat-box {
+    background:rgba(255,255,255,0.05); border-radius:20px;
+    padding:25px; margin-bottom:30px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .chat-box h2 { margin-bottom:15px; color:#00d4ff; }
+  .chat-input-wrap { display:flex; gap:10px; }
+  #userInput {
+    flex:1; padding:15px; border-radius:12px; border:none;
+    background:rgba(255,255,255,0.1); color:#fff; font-size:1rem;
+    outline:none;
+  }
+  #userInput::placeholder { color:#888; }
+  #sendBtn {
+    padding:15px 30px; border:none; border-radius:12px;
+    background:linear-gradient(90deg,#00d4ff,#a78bfa);
+    color:#fff; font-weight:bold; cursor:pointer;
+    transition:transform 0.2s;
+  }
+  #sendBtn:hover { transform:scale(1.05); }
+  #response {
+    margin-top:15px; padding:15px; border-radius:12px;
+    background:rgba(0,212,255,0.1); min-height:50px;
+    display:none; white-space:pre-wrap;
+  }
+  
+  /* Capability Cards */
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:20px;
+  }
+  .card {
+    background:rgba(255,255,255,0.05);
+    border-radius:16px; padding:25px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:all 0.3s;
+    cursor:pointer;
+  }
+  .card:hover {
+    transform:translateY(-5px);
+    border-color:#00d4ff;
+    box-shadow:0 10px 30px rgba(0,212,255,0.2);
+  }
+  .card .icon { font-size:2.5rem; margin-bottom:15px; }
+  .card h3 { color:#00d4ff; margin-bottom:10px; font-size:1.2rem; }
+  .card ul { list-style:none; color:#c8c8dc; font-size:0.95rem; }
+  .card ul li { padding:5px 0; }
+  .card ul li::before { content:"▸ "; color:#a78bfa; }
+  
+  /* Examples section */
+  .examples {
+    margin-top:40px;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px; padding:25px;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .examples h2 { color:#00d4ff; margin-bottom:15px; }
+  .example-btn {
+    display:inline-block; margin:6px; padding:10px 18px;
+    background:rgba(167,139,250,0.2);
+    border:1px solid #a78bfa;
+    border-radius:20px; color:#fff;
+    cursor:pointer; font-size:0.9rem;
+    transition:all 0.2s;
+  }
+  .example-btn:hover { background:#a78bfa; }
+  
+  footer {
+    text-align:center; margin-top:40px;
+    padding:20px; color:#888;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🤖 আমার পার্সোনাল এজেন্ট</h1>
+    <p>আমি যা যা করতে পারি — সব এক জায়গায়</p>
+  </header>
+
+  <!-- চ্যাট বক্স -->
+  <div class="chat-box">
+    <h2>💬 আপনার প্রশ্ন লিখুন</h2>
+    <div class="chat-input-wrap">
+      <input type="text" id="userInput" placeholder="যেমন: একটা সুন্দর রেসিপি দাও...">
+      <button id="sendBtn">পাঠান</button>
+    </div>
+    <div id="response"></div>
+  </div>
+
+  <!-- ক্যাপাবিলিটি কার্ড -->
+  <div class="grid">
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>লেখালেখি</h3>
+      <ul>
+        <li>ব্লগ পোস্ট ও আর্টিকেল</li>
+        <li>কবিতা ও গল্প</li>
+        <li>কভার লেটার ও রেজিউমে</li>
+        <li>ইমেইল ও চিঠি</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>কোডিং</h3>
+      <ul>
+        <li>ওয়েবসাইট বানানো (HTML/CSS/JS)</li>
+        <li>Python, Java, C++ কোড</li>
+        <li>বাগ ফিক্স ও ডিবাগিং</li>
+        <li>API ইন্টিগ্রেশন</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h3>ডেটা ও এনালাইসিস</h3>
+      <ul>
+        <li>Excel/CSV ডেটা প্রসেসিং</li>
+        <li>চার্ট ও ভিজুয়ালাইজেশন</li>
+        <li>পরিসংখ্যান ও ক্যালকুলেশন</li>
+        <li>লজিক ও ম্যাথ সলভ</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌍</div>
+      <h3>ভাষা ও অনুবাদ</h3>
+      <ul>
+        <li>বাংলা ⇄ ইংরেজি অনুবাদ</li>
+        <li>৫০+ ভাষা সাপোর্ট</li>
+        <li>গ্রামার চেক</li>
+        <li>টোন ও স্টাইল ঠিক করা</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>ক্রিয়েটিভ</h3>
+      <ul>
+        <li>লোগো ও ব্র্যান্ড আইডিয়া</li>
+        <li>গল্পের ক্যারেক্টার ডিজাইন</li>
+        <li>সোশ্যাল মিডিয়া ক্যাপশন</li>
+        <li>ইউটিউব স্ক্রিপ্ট</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>শেখা ও পড়া</h3>
+      <ul>
+        <li>যেকোনো টপিক ব্যাখ্যা</li>
+        <li>PDF/ডকুমেন্ট সামারি</li>
+        <li>প্রশ্ন-উত্তর সেশন</li>
+        <li>স্টাডি প্ল্যান তৈরি</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">🍳</div>
+      <h3>দৈনন্দিন কাজ</h3>
+      <ul>
+        <li>রেসিপি ও রান্নার গাইড</li>
+        <li>ট্রাভেল প্ল্যানিং</li>
+        <li>শপিং লিস্ট</li>
+        <li>ডায়েট ও ফিটনেস প্ল্যান</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>বিশ্লেষণ</h3>
+      <ul>
+        <li>আইডিয়া ব্রেইনস্টর্মিং</li>
+        <li>সমস্যা সমাধান</li>
+        <li>প্রো-কন এনালাইসিস</li>
+        <li>সিদ্ধান্তে সাহায্য</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- উদাহরণ প্রশ্ন -->
+  <div class="examples">
+    <h2>💡 কিছু উদাহরণ — ক্লিক করে দেখুন</h2>
+    <span class="example-btn">একটা ব্লগ পোস্ট লিখে দাও</span>
+    <span class="example-btn">Python এ fibonacci কোড</span>
+    <span class="example-btn">"আমি ভালো আছি" ইংরেজিতে অনুবাদ</span>
+    <span class="example-btn">একটা হেলদি ব্রেকফাস্ট রেসিপি</span>
+    <span class="example-btn">Instagram ক্যাপশন বানাও</span>
+    <span class="example-btn">HTML এ login form</span>
+  </div>
+
+  <footer>
+    <p>💙 এই এজেন্ট আপনার ২৪/৭ ডিজিটাল সঙ্গী</p>
+  </footer>
+
+</div>
+
+<script>
+  const input = document.getElementById('userInput');
+  const btn = document.getElementById('sendBtn');
+  const response = document.getElementById('response');
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    
+    response.style.display = 'block';
+    response.textContent = "📝 আপনি জিজ্ঞেস করেছেন: \"" + text + "\"\n\n";
+    response.textContent += "✅ এই প্রশ্নটা কপি করে চ্যাটে পাঠান — আমি সাথে সাথে উত্তর দেবো!\n\n";
+    response.textContent += "💡 টিপ: এই ওয়েবসাইটকে আরও শক্তিশালী করতে চাইলে এতে আসল AI API (যেমন Claude API) যুক্ত করা যায়।";
+    input.value = '';
+  }
+
+  btn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  // উদাহরণ বাটন
+  document.querySelectorAll('.example-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      input.value = b.textContent;
+      input.focus();
+    });
+  });
+</script>
+</body>
+</html>
